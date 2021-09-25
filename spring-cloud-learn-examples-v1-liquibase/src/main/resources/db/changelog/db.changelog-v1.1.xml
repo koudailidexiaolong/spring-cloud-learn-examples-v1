@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                            http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+                            http://www.liquibase.org/xml/ns/pro
+                            http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.2.xsd">
+    <changeSet id="inser-001" author="julong">
+        <insert tableName="BONUS">
+            <!-- 值为空的时候 defaultvalue会生效-->
+            <column name="NAME" defaultValue="julong01">julong</column>
+            <column name="JOB">农民</column>
+            <column name="SAL">1</column>
+        </insert>
+        <insert tableName="BONUS">
+            <column name="NAME" >julong1</column>
+            <column name="JOB">农民</column>
+            <column name="SAL">2</column>
+        </insert>
+        <insert tableName="BONUS">
+            <column name="NAME" >julong2</column>
+            <column name="JOB">农民</column>
+            <column name="SAL">3</column>
+        </insert>
+    </changeSet>
+</databaseChangeLog>

@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.julong</groupId>
+	<artifactId>spring-cloud-learn-examples-v1</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>pom</packaging>
+	<properties>
+		<spring.cloud-version>Edgware.SR6</spring.cloud-version>
+	</properties>
+
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.springframework.cloud</groupId>
+				<artifactId>spring-cloud-dependencies</artifactId>
+				<version>${spring.cloud-version}</version>
+				<type>pom</type>
+				<scope>import</scope>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<configuration>
+					<source>1.8</source>
+					<target>1.8</target>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<modules>
+		<module>spring-cloud-learn-examples-v1-test</module>
+		<module>spring-cloud-learn-examples-v1-hello</module>
+		<!-- 监视器 -->
+		<module>spring-cloud-learn-examples-v1-actuator</module>
+		<!-- rest  -->
+		<module>spring-cloud-learn-examples-v1-restTemplate</module>
+		<!-- eureka -->
+		<module>spring-cloud-learn-examples-v1-eureka</module>
+		<module>spring-cloud-learn-examples-v1-eureka-client</module>
+		<module>spring-cloud-learn-examples-v1-eureka-metadata</module>
+		<!-- 网关 zuul 动态路由 -->
+		<module>spring-cloud-learn-examples-v1-zuul</module>
+		<module>spring-cloud-learn-examples-v1-zuul-client</module>
+		<!-- 配置中心 config 服务端-->
+		<module>spring-cloud-learn-examples-v1-config</module>
+		<module>spring-cloud-learn-examples-v1-config-client</module>
+		<!-- 管理服务 和监控服务 -->
+		<module>spring-cloud-learn-examples-v1-admin</module>
+		<module>spring-cloud-learn-examples-v1-admin-client</module>
+		<!-- swagger ui api接口展示-->
+		<module>spring-cloud-learn-examples-v1-swagger</module>
+		<!-- 日志跟踪 sleuth -->
+		<module>spring-cloud-learn-examples-v1-sleuth-zipkin</module>
+		<module>spring-cloud-learn-examples-v1-sleuth-client</module>
+		<!-- 引入消息队列 -->
+		<module>spring-cloud-learn-examples-v1-sleuth-stream-client</module>
+		<module>spring-cloud-learn-examples-v1-sleuth-zipkin-stream</module>
+		<!-- hystrix 熔断 -->
+		<module>spring-cloud-learn-examples-v1-hystrix</module>
+		<module>spring-cloud-learn-examples-v1-hystrix-client</module>
+		<!-- 熔断监视工具 -->
+		<module>spring-cloud-learn-examples-v1-hystrix-dashboard</module>
+		<!-- 融合 hystrix 工具 -->
+		<module>spring-cloud-learn-examples-v1-hystrix-turbine</module>
+		
+		<!-- 熔断rabbitmq 方式 -->
+		<module>spring-cloud-learn-examples-v1-hystrix-rabbitmq-client</module>
+		<module>spring-cloud-learn-examples-v1-hystrix-rabbitmq-turbine</module>
+		<!-- ribbon 负载均衡  -->
+		<module>spring-cloud-learn-examples-v1-ribbon</module>
+		<module>spring-cloud-learn-examples-v1-ribbon-server</module>
+		<module>spring-cloud-learn-examples-v1-ribbon-client</module>
+		<!-- 脱离eureka使用 ribbon 负载 -->
+		<module>spring-cloud-learn-examples-v1-ribbon-without-eureka-client</module>
+		<!-- feign 声明rest 调用   -->
+		<module>spring-cloud-learn-examples-v1-feign</module>
+		<module>spring-cloud-learn-examples-v1-feign-server</module>
+		<module>spring-cloud-learn-examples-v1-feign-client</module>
+		
+		<!-- flyway sql 执行 包括创建表 -->
+		<module>spring-cloud-learn-examples-v1-flyway</module>
+		<module>spring-cloud-learn-examples-v1-liquibase</module>
+		<!-- ssl 请求方式 -->
+		<module>spring-cloud-learn-examples-v1-ssl</module>
+	</modules>
+</project>
