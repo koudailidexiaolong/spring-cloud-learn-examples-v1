@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.netflix.eureka.server.EnableEurekaServer;
 
 /**
- * 启动类
+ * 服务容错保护hystrix 服务治理 eureka 启动类
  * @author julong
  * @date 2021年9月5日 下午7:12:30
  * @desc 

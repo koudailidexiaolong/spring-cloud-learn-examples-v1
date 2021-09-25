@@ -16,10 +16,10 @@ import org.springframework.cloud.netflix.hystrix.EnableHystrix;
 @SpringBootApplication
 @EnableHystrix //启用熔断服务配置 也可以使用 @EnableCircuitBreaker
 @EnableEurekaClient
-public class HystrixSpringBootApplication {
+public class HystrixClientSpringBootApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(HystrixSpringBootApplication.class, args);
+        SpringApplication.run(HystrixClientSpringBootApplication.class, args);
     }
 
 }

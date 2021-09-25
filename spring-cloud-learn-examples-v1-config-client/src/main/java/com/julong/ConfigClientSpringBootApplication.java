@@ -2,7 +2,6 @@ package com.julong;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
 
 /**
  * 配置中心客户端

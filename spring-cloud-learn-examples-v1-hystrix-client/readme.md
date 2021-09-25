@@ -1,24 +1,74 @@
-#### 依赖项目
+#### hystrix 服务容错保护客户端服务
 
-##### `spring-cloud-learn-examples-v1-actuator`
+##### spring-cloud-learn-examples-v1-hystrix-client
 
-项目访问目录：http://192.168.10.27:18080/
 
-| ID          | Description                                                  | Sensitive Default(默认值) |
-| ----------- | ------------------------------------------------------------ | ------------------------- |
-| auditevents | 当前引用程序启用、使用的事件                                 | true                      |
-| autoconfig  | 显示自动配置信息                                             | true                      |
-| beans       | 显示所有的 Spring beans 在当前程序中                         | true                      |
-| configprops | 显示所有的 @ConfigurationProperties                          | true                      |
-| dump        | 显示所有的线程快照                                           | true                      |
-| env         | 显示应用环境变量信息                                         | true                      |
-| health      | 显示应用程序的健康信息指标 如果为安全时显示详细 不安全只显示一个状态 | false                     |
-| info        | 显示应用信息                                                 | false                     |
-| loggers     | 显示在程序中配置日志的信息                                   | true                      |
-| mappings    | 显示所有的mapping 映射的 url路径                             | true                      |
-| metrics     | 显示应用程序的指标                                           | true                      |
-| trace       | 显示日志跟踪信息 显示 100 HTTP 个请求                        | true                      |
-| heapdump    | 显示下载所有线程快照文件                                     | true                      |
-|             |                                                              |                           |
+
+配置信息
+
+pom.xml
+
+```xml
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-hystrix</artifactId>
+</dependency>
+
+<!-- 引入eureka -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-eureka</artifactId>
+</dependency>
+
+```
+
+application.properties
+
+```properties
+spring.application.name=spring-cloud-learn-examples-v1-hystrix-client
+
+#端口
+server.port=18081
+
+#设置是否启用安全
+management.security.enabled=false
+
+spring.devtools.restart.enabled=false
+#设置服务器信息
+
+info.app.encoding=@project.build.sourceEncoding@
+info.app.java.source=@java.version@
+info.app.java.target=@java.version@
+## eureka 注册地址
+eureka.client.service-url.defaultZone=http://192.168.10.27:8761/eureka
+## 是否显示真实IP地址
+eureka.instance.prefer-ip-address=true
+## eureka 注册显示名称
+eureka.instance.instance-id=${spring.application.name}:${server.port}
+## 启用eurka客户端服务
+eureka.client.enabled=true
+## 注册到eurka服务
+eureka.client.register-with-eureka=true
+
+management.metrics.binders.hystrix.enabled=true
+hystrix.metrics.enabled=true
+hystrix.shareSecurityContext=false
+
+```
+
+
+
+依赖服务：
+
+###### 第一步启动：spring-cloud-learn-examples-v1-hystrix
+
+###### 第二步启动：spring-cloud-learn-examples-v1-hystrix-client
+
+​	使用多个端口模拟多个服务
+
+服务展示地址：
+
+http://192.168.10.27:18082/test 、http://192.168.10.27:18081/test
+
 
 

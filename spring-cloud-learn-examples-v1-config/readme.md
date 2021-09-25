@@ -3,29 +3,67 @@
 ##### spring-cloud-learn-examples-v1-config-server 配置中心 服务端
 
 ```peoperties
+spring.application.name=spring-cloud-learn-examples-v1-config-server
+
+logging.level.*=trace
+logging.level.org.springframework.web=trace
+#端口
+server.port=10088
+
+#设置是否启用安全
+management.security.enabled=false
+
+#设置服务器信息
+info.app.encoding=@project.build.sourceEncoding@
+info.app.java.source=@java.version@
+info.app.java.target=@java.version@
+
 spring.cloud.config.enabled=true
 # 默认读取配置文件路径 必须要有文件夹不然读取不出来数据
-spring.cloud.config.server.native.search-locations=file:D:///config///
-
+spring.cloud.config.server.native.search-locations=file:D:/config/
 # 代表从本地读取文件
 spring.profiles.active=native
 ```
 
 
 
-请求方式：
+访问方式：
 
-http://192.168.10.27:10088/spring-cloud-learn-examples-v1-config-server/default/
+http://192.168.10.27:10088/spring-config/default
 
-http://192.168.10.27:10088/spring-cloud-learn-examples-v1-config-server.properties
+```json
+{
+  "name": "spring-config",
+  "profiles": [
+    "default"
+  ],
+  "label": null,
+  "version": null,
+  "state": null,
+  "propertySources": [
+    {
+      "name": "file:D:/config/spring-config.properties",
+      "source": {
+        "welcome.message": "hello spring-config"
+      }
+    }
+  ]
+}
+```
 
-其中 spring-cloud-learn-examples-v1-config-server 为文件名  default 为默认配置的路径
 
-http://192.168.10.27:10088/spring-config/default/data  
 
-http://192.168.10.27:10088/data/spring-config.properties
+http://192.168.10.27:10088/spring-config.properties
 
-其中 spring-config 为文件名  default 为默认配置的路径 data 为文件夹
+```txt
+welcome.message: hello spring-config
+```
+
+
+
+http://192.168.10.27:10088/spring-cloud-learn-examples-v1-config-server/default
+
+
 
 ```json
 {
@@ -38,9 +76,9 @@ http://192.168.10.27:10088/data/spring-config.properties
   "state": null,
   "propertySources": [
     {
-      "name": "file:D:///config///spring-cloud-learn-examples-v1-config-server.properties",
+      "name": "file:D:/config/spring-cloud-learn-examples-v1-config-server.properties",
       "source": {
-        "message": "hello spring-cloud-learn-examples-v1-config-server "
+        "welcome.message": "hello spring-cloud-learn-examples-v1-config-server "
       }
     }
   ]

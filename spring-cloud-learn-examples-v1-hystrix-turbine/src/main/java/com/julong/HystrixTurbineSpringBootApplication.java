@@ -7,7 +7,7 @@ import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.turbine.EnableTurbine;
 
 /**
- * 启动类
+ * 容错保护服务治理服务启动类
  * @author julong
  * @date 2021年9月5日 下午7:12:30
  * @desc 

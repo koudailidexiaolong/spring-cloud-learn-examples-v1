@@ -8,6 +8,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
+/**
+ * 不使用eureka 实现轮巡访问
+ * @author julong
+ * @date 2021年9月25日 下午7:32:52
+ * @desc 
+ */
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration

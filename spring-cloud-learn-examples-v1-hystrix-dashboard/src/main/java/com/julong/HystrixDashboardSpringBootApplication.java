@@ -7,7 +7,7 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 import org.springframework.cloud.netflix.hystrix.dashboard.EnableHystrixDashboard;
 
 /**
- * 启动类
+ * 容错保护服务 图形界面 工具启动类
  * @author julong
  * @date 2021年9月5日 下午7:12:30
  * @desc 
