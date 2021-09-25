@@ -2,6 +2,7 @@ package com.julong;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 
 import zipkin.server.internal.EnableZipkinServer;
 
@@ -13,6 +14,7 @@ import zipkin.server.internal.EnableZipkinServer;
  * @desc 
  */
 @SpringBootApplication
+@EnableEurekaClient
 @EnableZipkinServer
 public class SleuthServerSpringBootApplication {
 
