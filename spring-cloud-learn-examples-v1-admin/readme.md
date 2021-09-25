@@ -4,5 +4,24 @@
 
 微服务管理控制台
 
-项目访问目录：http://192.168.10.27:18080/
+需要增加配置：
+
+```xml
+<!-- admin 微服务管理端 -->
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-server</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+		<dependency>
+			<groupId>de.codecentric</groupId>
+			<artifactId>spring-boot-admin-server-ui</artifactId>
+			<version>1.5.7</version>
+		</dependency>
+
+```
+
+
+
+项目访问目录：http://192.168.10.27:18090/
 
