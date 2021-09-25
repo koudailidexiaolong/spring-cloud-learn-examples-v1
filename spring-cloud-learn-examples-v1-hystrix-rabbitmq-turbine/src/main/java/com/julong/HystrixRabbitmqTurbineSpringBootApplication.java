@@ -3,7 +3,7 @@ package com.julong;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
+import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.cloud.netflix.turbine.stream.EnableTurbineStream;
 
 /**
@@ -14,7 +14,7 @@ import org.springframework.cloud.netflix.turbine.stream.EnableTurbineStream;
  * 访问方式  192.168.10.27:18761/turbine.stream
  */
 @SpringBootApplication
-@EnableDiscoveryClient
+@EnableEurekaClient
 @EnableTurbineStream //启用集中管理服务治理熔断服务
 public class HystrixRabbitmqTurbineSpringBootApplication {
 

@@ -1,24 +1,88 @@
-#### 依赖项目
+### 使用中间件 rabbitmq 进行收集
 
-##### `spring-cloud-learn-examples-v1-actuator`
+客户端
 
-项目访问目录：http://192.168.10.27:18080/
+#### spring-cloud-learn-examples-v1-hystrix-rabbitmq-client
 
-| ID          | Description                                                  | Sensitive Default(默认值) |
-| ----------- | ------------------------------------------------------------ | ------------------------- |
-| auditevents | 当前引用程序启用、使用的事件                                 | true                      |
-| autoconfig  | 显示自动配置信息                                             | true                      |
-| beans       | 显示所有的 Spring beans 在当前程序中                         | true                      |
-| configprops | 显示所有的 @ConfigurationProperties                          | true                      |
-| dump        | 显示所有的线程快照                                           | true                      |
-| env         | 显示应用环境变量信息                                         | true                      |
-| health      | 显示应用程序的健康信息指标 如果为安全时显示详细 不安全只显示一个状态 | false                     |
-| info        | 显示应用信息                                                 | false                     |
-| loggers     | 显示在程序中配置日志的信息                                   | true                      |
-| mappings    | 显示所有的mapping 映射的 url路径                             | true                      |
-| metrics     | 显示应用程序的指标                                           | true                      |
-| trace       | 显示日志跟踪信息 显示 100 HTTP 个请求                        | true                      |
-| heapdump    | 显示下载所有线程快照文件                                     | true                      |
-|             |                                                              |                           |
+#### 配置信息
 
+pom.xml
+
+```xml
+<!-- 引入hystrix rabbitmq -->
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-hystrix</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-netflix-archaius</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-netflix-hystrix-stream</artifactId>
+</dependency>
+<dependency>
+    <groupId>org.springframework.cloud</groupId>
+    <artifactId>spring-cloud-starter-stream-rabbit</artifactId>
+</dependency>
+```
+
+
+
+application.properties
+
+```properties
+spring.application.name=spring-cloud-learn-examples-v1-hystrix-rabbitmq-client
+
+#端口
+server.port=18082
+
+#设置是否启用安全
+management.security.enabled=false
+
+#设置服务器信息
+
+info.app.encoding=@project.build.sourceEncoding@
+info.app.java.source=@java.version@
+info.app.java.target=@java.version@
+## 服务注册地址
+eureka.client.service-url.defaultZone=http://192.168.10.27:8761/eureka
+eureka.instance.prefer-ip-address=true
+eureka.instance.instance-id=${spring.application.name}-${server.port}
+#启用eurka客户端服务
+eureka.client.enabled=true
+# 注册到eurka服务
+eureka.client.register-with-eureka=true
+
+## 启用容错通过消息流存储访问
+hystrix.stream.queue.enabled=true
+
+## rabbitmq配置地址
+spring.rabbitmq.host=192.168.10.222
+spring.rabbitmq.port=5672
+spring.rabbitmq.username=admin
+spring.rabbitmq.password=admin
+
+```
+
+
+
+#### 服务依赖关系
+
+###### 第一步启动：spring-cloud-learn-examples-v1-hystrix
+
+​			访问地址：http://192.168.10.27:8761/
+
+###### 第二步启动：spring-cloud-learn-examples-v1-hystrix-rabbitmq-client
+
+​			访问地址：http://192.168.10.27:18081/user/1 、http://192.168.10.27:18082/test
+
+###### 第三步启动：spring-cloud-learn-examples-v1-hystrix-dashboard
+
+​			访问地址：http://192.168.10.27:18091/hystrix
+
+将下面地址输入到仪表盘控制台中可实现查询
+
+http://192.168.10.27:18081/hystrix.stream  http://192.168.10.27:18082/hystrix.stream 
 
