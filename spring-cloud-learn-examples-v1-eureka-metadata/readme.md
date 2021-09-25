@@ -2,7 +2,64 @@
 
 ##### spring-cloud-learn-examples-v1-eureka-metadata
 
-相关配置 http://192.168.10.27:18766/user-instance
+
+
+pom.xml
+
+```xml
+	<!-- 引入eureka -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-eureka</artifactId>
+		</dependency>
+```
+
+
+
+application.properties
+
+```properties
+spring.application.name=spring-cloud-learn-examples-v1-eureka-metadata
+#端口
+server.port=18766
+
+#设置是否启用安全
+management.security.enabled=false
+
+#设置服务器信息
+
+info.app.encoding=@project.build.sourceEncoding@
+info.app.java.source=@java.version@
+info.app.java.target=@java.version@
+
+# 是否将本机服务注册
+
+eureka.instance.hostname=192.168.10.27
+eureka.instance.appname=${spring.application.name}
+eureka.instance.prefer-ip-address=true
+# 服务发现地址
+eureka.client.service-url.defaultZone=http://192.168.10.27:8761/eureka
+eureka.client.enabled=true
+eureka.client.fetch-registry=true
+eureka.client.register-with-eureka=true
+
+# 元数据定义 map集合
+eureka.instance.metadata-map.my-metadata=julong-data
+eureka.instance.metadata-map.my-metadata1=julong-data
+
+eureka.instance.instance-id=${spring.application.name}
+# 分组名称
+eureka.instance.app-group-name=julong
+# 启用心跳检测
+eureka.client.healthcheck.enabled=true
+
+```
+
+
+
+
+
+###### 元数据访问路径： http://192.168.10.27:18766/user-instance
 
 返回当前服务的详细信息
 
@@ -66,25 +123,11 @@
 
 
 
-关于配置：
+服务依赖：
 
-```prop
-# 是否将本机服务注册
+###### 第一步启动：spring-cloud-learn-examples-v1-eureka
 
-eureka.instance.hostname=192.168.10.27
-eureka.instance.prefer-ip-address=true
-# 服务发现地址
-eureka.client.service-url.defaultZone=http://192.168.10.27:8761/eureka
-# 元数据定义 map集合
-eureka.instance.metadata-map.my-metadata=julong-data
-eureka.instance.metadata-map.my-metadata1=julong-data
-# 表示当前app 的instanceId 在 服务端展示的名称
-eureka.instance.instance-id=spring-cloud-learn-examples-v1-eureka-metadata
-# 分组名称
-eureka.instance.app-group-name=julong
-# 启用客户端心跳检测 默认为 true
-eureka.client.healthcheck.enabled=true
-```
+###### 第二步启动：spring-cloud-learn-examples-v1-eureka-metadata
 
 
 

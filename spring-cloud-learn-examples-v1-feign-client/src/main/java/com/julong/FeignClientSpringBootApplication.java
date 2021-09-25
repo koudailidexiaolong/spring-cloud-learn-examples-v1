@@ -7,6 +7,12 @@ import org.springframework.cloud.netflix.feign.EnableFeignClients;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
+/**
+ * 声明式服务调用客户端服务
+ * @author julong
+ * @date 2021年9月25日 下午6:11:57
+ * @desc 
+ */
 @Configuration
 @ComponentScan
 @EnableAutoConfiguration

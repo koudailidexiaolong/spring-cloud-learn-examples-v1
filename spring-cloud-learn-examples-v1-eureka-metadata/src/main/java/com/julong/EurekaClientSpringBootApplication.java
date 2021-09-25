@@ -6,13 +6,13 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
- * 启动类
+ * 元数据启动类
  * @author julong
  * @date 2021年9月5日 下午7:12:30
  * @desc 
  * 
  */
-@SpringBootApplication // same as @Configuration @EnableAutoConfiguration @ComponentScan
+@SpringBootApplication
 @EnableDiscoveryClient
 public class EurekaClientSpringBootApplication {
 

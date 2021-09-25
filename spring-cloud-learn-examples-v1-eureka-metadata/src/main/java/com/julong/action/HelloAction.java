@@ -19,9 +19,7 @@ public class HelloAction {
 	 */
 	@Autowired
 	private DiscoveryClient discoveryClient;
-	
-	
-	
+
 	
 	@RequestMapping("/")
 	public String hello(){
