@@ -21,3 +21,30 @@
 | heapdump    | 显示下载所有线程快照文件                                     | true                      |
 |             |                                                              |                           |
 
+
+
+#### 配置文件加载顺序
+1.在命令行中传入参数
+
+2.SPRING_APPLICATION_JSON 中的属性
+
+3.java:comp/env 中的JNDI属性
+
+4.java 系统属性
+
+5.操作系统环境变量
+
+6.通过random.*配置的随机属性
+
+7.jar包外的配置文件
+
+8.jar包内的配置文件
+
+9.位于jar包外的文件
+
+10.位于jar包内的文件
+
+11.使用@Configuration 注解修改的类
+
+12.默认配置
+
